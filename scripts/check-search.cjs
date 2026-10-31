@@ -1,0 +1,34 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const core = require('../assets/search-core.js');
+const read = file => JSON.parse(fs.readFileSync(path.join(root, 'data', file), 'utf8'));
+const catalog = read('search.json');
+const library = read('library-index.json');
+const files = read('file-index.json');
+const run = state => core.filterCatalog(catalog, state);
+assert.equal(run({omni: true}).length, 10, 'Recovery filter must return exactly ten guide entries');
+assert(run({q: 'Nowhere'}).some(x => x.slug === 'nowhere'), 'Title search missed Nowhere');
+assert(run({q: 'K790'}).some(x => x.slug === 'nowhere'), 'Edition search missed the recorded K790 input');
+assert(run({q: '352×416'}).some(x => x.slug === 'god-of-war-betrayal'), 'Resolution variants must normalize × and x');
+assert.equal(run({q: 'zzzz-no-such-game-archive-12345'}).length, 0, 'Empty query must produce no false result');
+assert(run({year: 'unknown'}).every(x => !x.year), 'Unknown year filter leaked known years');
+assert(run({genre: 'unknown'}).every(x => !x.genres.length), 'Unknown genre filter leaked known genres');
+assert(run({variants: true}).every(x => x.variants > 0), 'Edition filter included an empty source record');
+for (const sort of ['oldest', 'newest']) {
+  const items = run({sort});let reachedUnknown = false;let previous = sort === 'oldest' ? -Infinity : Infinity;
+  items.forEach(item => {if (!item.year) {reachedUnknown = true;return;}assert(!reachedUnknown);const value=Number(item.year);assert(sort === 'oldest' ? value>=previous : value<=previous);previous=value;});
+}
+const allPages=[];
+for(let p=1;p<=Math.ceil(catalog.length/36);p++) allPages.push(...core.paginate(catalog,p,36).items);
+assert.equal(allPages.length,catalog.length);assert.equal(new Set(allPages.map(x=>x.id)).size,catalog.length,'Pagination duplicated or omitted an entry');
+assert.equal(core.paginate([],999,36).page,1);assert.equal(core.paginate(catalog,-5,36).page,1);
+assert.equal(core.paginate(catalog,Infinity,36).page,Math.ceil(catalog.length/36));
+assert(core.filterReferences(library,{source:'rg'}).every(x=>x.source==='rg'));
+assert(core.filterReferences(library,{scope:'linked'}).every(x=>x.catalog_slugs.length));
+assert(core.filterReferences(library,{scope:'unlinked'}).every(x=>!x.catalog_slugs.length));
+assert.equal(core.filterReferences(files,{source:'vault',extension:'.jar'}).length,7291);
+assert.equal(core.filterReferences(files,{extension:'.mpn'}).length,0);
+assert(core.matches('352 x 416','352×416'));assert(core.matches('Café & arcade','cafe and'));
+console.log('Search, editions, recovery filters, unknown values, source scopes and complete pagination passed.');

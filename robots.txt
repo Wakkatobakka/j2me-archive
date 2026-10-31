@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wakkatobakka.github.io/j2me-archive/sitemap.xml
