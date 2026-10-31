@@ -44,4 +44,4 @@ Report an incorrect detail, missing credit, or broken link through [GitHub Issue
 
 ---
 
-Independent catalog by Wakkatobakka. No affiliation with the original platform owners, publishers, or source sites. Setup and offline rebuild instructions are in [SETUP.md](SETUP.md).
+Independent catalog by Wakkatobakka. No affiliation with the original platform owners, publishers, or source sites.
