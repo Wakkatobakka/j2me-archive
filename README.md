@@ -1,47 +1,32 @@
-# J2ME / The Lost Catalog
+# J2ME Archive
 
-**Before the app store, there was the .jar.**
+[Browse the J2ME archive](https://wakkatobakka.github.io/j2me-archive/) · [Platform history](history/index.html) · [Creators](creators/index.html) · [Wakka’s recoveries](recovered/index.html) · [Sources](sources/index.html)
 
-[**Browse the J2ME archive →**](https://wakkatobakka.github.io/j2me-archive/) · [Wakka’s recoveries](https://wakkatobakka.github.io/j2me-archive/recovered/) · [Sources and credits](https://wakkatobakka.github.io/j2me-archive/sources/)
+Wakkatobakka’s independent catalog of Java phone games, their creators, and the handset editions recorded by preservation communities.
 
-Created and maintained by **Wakkatobakka**. A source-linked catalog of **991 entries**, starting with the ten J2ME games recorded in the public Omni Player guide and reaching into a much larger paper trail.
+## Browse the archive
 
-![J2ME Archive: Before the app store, there was the .jar. An original feature-phone illustration.](assets/banner.png)
+- **991 catalog entries**, including 989 games listed in the My Abandonware J2ME directory and two additional Omni Player records.
+- **Ten Omni Player recovery records** with Wakka’s recorded input editions and acquisition information.
+- **16,548 reference library records** from My Abandonware, Kahvibreak, and RG-Backup.
+- **7,427 file inventory entries** covering named JARs, JAD descriptors and Internet Archive packages.
 
-## Explore the catalog
+The homepage catalog supports search by title, credit, handset, resolution, language, and edition label. Use **Game histories only** to browse the entries revised in the historical research pass. Each researched game links to its interviews, period coverage, credits, or production materials where available.
 
-- **991 individual pages:** 989 titles explicitly listed in My Abandonware’s J2ME directory, plus two additional Omni recovery titles.
-- **10 Omni recovery records,** preserving the input editions, filenames where recorded, source status, and remaining uncertainties.
-- Search by title, alias, source credit, handset, resolution, language, or edition label; filter by year and genre.
-- Source-scoped bibliographic tables and handset/version/language records, with links back to the original listings.
-- A separate **16,548-record reference library** from My Abandonware, Kahvibreak, and RG-Backup.
-- A separate **7,427-entry file inventory**: source-listed JARs, JAD descriptors, and 25 archive-package references.
-- [Catalog CSV](data/catalog.csv), [catalog JSON](data/catalog.json), and [field definitions](data/README.md).
+[Catalog CSV](data/catalog.csv) · [Catalog JSON](data/catalog.json) · [Data fields](data/README.md)
 
-## What the records establish
+## Research and attribution
 
-This is a metadata catalog. Game files remain with their original sources. No game binaries were downloaded, executed, or hashed to build this site. An Omni recovery label reports the public guide’s recorded input; it does not claim a new compatibility test or a byte-identical match to an external listing.
+[Research coverage](research/STATUS.md) lists the games reviewed and the remaining gaps. [History data](data/history.json) records the sources, artwork attribution, credits, and claims used on the pages. The existing catalog snapshot is **October 30, 2026**.
 
-Source collections overlap. A title, a source row, a handset edition-label group, and a file are different units. Their counts are kept separate. Kahvibreak’s public table also includes Mophun without a per-row platform column, so its rows remain research leads. Non-Java Mophun and ancillary files are excluded from the site’s J2ME-oriented file inventory.
+The [source register](sources/index.html) credits Wakka’s Omni Player guide, the original directory and file inventories, and their preservation contributors. The [field notes](field-notes/index.html) explain how related entries and handset labels were matched. An Omni recovery entry identifies the input Wakka recorded. Other files with similar labels have no verified exact match to that input in this catalog.
 
-Conflicting credits, missing file groups, and language distinctions remain visible. The [field notes](https://wakkatobakka.github.io/j2me-archive/field-notes/) explain the matching rules and evidence limits.
+Historical artwork and screenshots appear with their source and attribution. Third-party images, games, trademarks, and metadata retain their own ownership and terms. The archive bundles web pages, metadata, and reference images. Game packages remain with their source collections.
 
-## Sources and credits
+## Publishing
 
-The starting recovery records come from [Wakkatobakka’s Omni Player game guide](https://github.com/Wakkatobakka/Omni-Player/blob/main/GAME_GUIDE.md). The wider catalog credits [My Abandonware](https://www.myabandonware.com/browse/platform/j2me/), [Kahvibreak / Flashpoint Archive](https://flashpointarchive.org/datahub/Kahvibreak_Game_List), [RG-Backup and original rugame.mobi contributors](https://github.com/remixer-dec/rg-backup), the [M5-Dev J2ME Vault mirror](https://huggingface.co/datasets/M5-Dev/j2me-vault), and the [Internet Archive j2me-hipnosis item](https://archive.org/details/j2me-hipnosis).
+The repository is a static site. Use GitHub Pages with the repository root as the source. The existing `.nojekyll` file should be included with the site files.
 
-Snapshot: **October 30, 2026**. RG-Backup is pinned to commit `5f610a98204c7800c6214ba1a82c44c23893b649`. The [source register](https://wakkatobakka.github.io/j2me-archive/sources/) records the scope, counts, and existing third-party metadata notices. Those notices remain specific to their source material; this repository adds no permission grant for Wakkatobakka’s unrelated original code, writing, or artwork.
+Report corrections with a supporting source through [GitHub Issues](https://github.com/Wakkatobakka/j2me-archive/issues).
 
-This repository contains the catalog, original site presentation, and original decorative artwork. Game binaries, source descriptions, screenshots, and original game art are not bundled. Third-party games, trademarks, metadata, and source materials retain their respective ownership and notices.
-
-## Errors and broken links
-
-Report an incorrect detail, missing credit, or broken link through [GitHub Issues](https://github.com/Wakkatobakka/j2me-archive/issues). Include the title or record ID and a supporting source where possible. Wakka reviews reports and publishes updates.
-
-## More from Wakka’s archive
-
-[Qualcomm BREW](https://wakkatobakka.github.io/qualcomm-brew-archive/) · [Zeebo](https://wakkatobakka.github.io/zeebo-archive/) · [ExEn](https://wakkatobakka.github.io/exen-game-archive/) · [DoJa](https://wakkatobakka.github.io/doja-archive/) · [The workshop](https://wakkatobakka.github.io/)
-
----
-
-Independent catalog by Wakkatobakka. No affiliation with the original platform owners, publishers, or source sites.
+[ExEn](https://wakkatobakka.github.io/exen-game-archive/) · [Zeebo](https://wakkatobakka.github.io/zeebo-archive/) · [BREW](https://wakkatobakka.github.io/qualcomm-brew-archive/) · [N-Gage](https://wakkatobakka.github.io/ngage-archive/) · [DoJa](https://wakkatobakka.github.io/doja-archive/) · [Wakka’s Workshop](https://wakkatobakka.github.io/)

@@ -17,7 +17,8 @@
       matches(item.search, state.q) &&
       (!state.year || (state.year === 'unknown' ? !item.year : item.year === state.year)) &&
       (!state.genre || (state.genre === 'unknown' ? !item.genres.length : item.genres.includes(state.genre))) &&
-      (!state.omni || item.omni) && (!state.variants || item.variants > 0));
+      (!state.omni || item.omni) && (!state.variants || item.variants > 0) &&
+      (!state.history || item.history));
     return selected.sort((a, b) => {
       if (state.sort === 'recovered' && a.omni !== b.omni) return a.omni ? -1 : 1;
       if (state.sort === 'oldest' || state.sort === 'newest') {

@@ -29,7 +29,9 @@
     const top = node('div');
     const row = node('div', null, 'record-top');
     row.append(node('span', (item.year || 'YEAR UNRECORDED') + ' / J2ME'));
-    row.append(node('span', item.omni ? 'OMNI RECOVERY' : 'SOURCE-LISTED', item.omni ? 'badge omni' : ''));
+    if (item.omni) row.append(node('span', 'OMNI RECOVERY', 'badge omni'));
+    else if (item.history) row.append(node('span', 'GAME HISTORY', 'research-label'));
+    else row.append(node('span', 'SOURCE-LISTED'));
     top.append(row, node('h3', item.title));
     const bottom = node('div', null, 'record-bottom');
     bottom.append(node('span', item.genres.join(' / ') || 'Genre not recorded'), node('span', '↗', 'arrow'));
@@ -53,6 +55,7 @@
   function initBrowser(container) {
     const kind = container.dataset.browser;
     const isCatalog = kind === 'catalog';const isFile = kind === 'files';
+    const onHome = container.closest('#catalog') !== null;
     const form = document.querySelector(isCatalog ? '#catalog-form' : '#reference-form');
     const results = document.querySelector('#results');const count = document.querySelector('#result-count');
     const pages = document.querySelector('#pages');const clear = document.querySelector('#clear-filters');
@@ -79,7 +82,8 @@
       return params;
     }
     function pageURL(p, s) {
-      const url = new URL(root + kind + '/index.html', location.href);
+      const pagePath = onHome ? 'index.html#catalog' : root + kind + '/index.html';
+      const url = new URL(pagePath, location.href);
       url.search = paramsFor(s, p).toString();
       return url.href;
     }
@@ -90,7 +94,7 @@
       const fragment = document.createDocumentFragment();
       view.items.forEach(item => fragment.append(isCatalog ? catalogCard(item) : referenceRow(item, isFile)));
       if (!view.total) {
-        const empty = node('div', null, 'empty');empty.append(node('h3', 'No records on that trail.'), node('p', 'Try a shorter title, a different spelling, or clear the filters.'));
+        const empty = node('div', null, 'empty');empty.append(node('h3', 'No matching entries'), node('p', 'Try another title or clear the filters.'));
         fragment.append(empty);
       }
       results.replaceChildren(fragment);
@@ -127,7 +131,23 @@
     }));
     clear.addEventListener('click', () => {form.reset();activePage=1;render(true);document.querySelector('#search').focus();});
     window.addEventListener('popstate', () => {readURL();render(false);});
-    getJSON(isCatalog ? 'search.json' : isFile ? 'file-index.json' : 'library-index.json').then(items => {
+    const indexFile = isCatalog ? 'search.json' : isFile ? 'file-index.json' : 'library-index.json';
+    const histories = isCatalog ? getJSON('history-search.json').catch(() => null) : Promise.resolve(null);
+    Promise.all([getJSON(indexFile), histories]).then(([items, historyBySlug]) => {
+      if (historyBySlug) {
+        for (const item of items) {
+          const terms = historyBySlug[item.slug];
+          if (typeof terms !== 'string') continue;
+          item.history = true;
+          item.search += ' ' + terms;
+        }
+      } else if (isCatalog) {
+        const historyField = form.querySelector('[name="history"]');
+        if (historyField) {
+          fields.splice(fields.indexOf(historyField), 1);
+          historyField.closest('label').remove();
+        }
+      }
       all=items;readURL();form.hidden=false;clear.hidden=false;render(false);
     }).catch(() => {
       const message=statusMessage('Search could not load. The page links and original-source links below are still available. Reload the page to retry.', true);

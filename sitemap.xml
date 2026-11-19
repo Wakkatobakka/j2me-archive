@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://wakkatobakka.github.io/j2me-archive/</loc></url>
 <url><loc>https://wakkatobakka.github.io/j2me-archive/catalog/</loc></url>
@@ -1623,4 +1623,4 @@
 <url><loc>https://wakkatobakka.github.io/j2me-archive/files/page/186/</loc></url>
 <url><loc>https://wakkatobakka.github.io/j2me-archive/field-notes/</loc></url>
 <url><loc>https://wakkatobakka.github.io/j2me-archive/sources/</loc></url>
-</urlset>
+<url><loc>https://wakkatobakka.github.io/j2me-archive/history/</loc></url><url><loc>https://wakkatobakka.github.io/j2me-archive/creators/</loc></url></urlset>
