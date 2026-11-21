@@ -1,0 +1,23 @@
+/* Keep the platform and its catalog in view before the first featured game. */
+.collection-landing .collection-intro { width:100%; padding:0; margin:0; }
+section.collection-landing { display:block; min-height:0; padding-block:clamp(1.55rem,4vw,3rem); }
+.home-hero.collection-landing .collection-intro { width:var(--shell, min(1100px, calc(100% - 2rem))); margin-inline:auto; }
+.collection-landing .all-archives { display:inline-flex; align-items:center; min-height:36px; margin-bottom:.4rem; text-decoration:underline; text-underline-offset:.2em; font-size:.84rem; }
+/* The masthead names the archive. Retain its heading for assistive technology. */
+.collection-landing #collection-title {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0;
+}
+.collection-landing .hero-lede { margin:0; font-size:clamp(1rem,2vw,1.23rem); max-width:57ch; line-height:1.45; }
+.collection-actions { display:flex; flex-wrap:wrap; gap:.55rem; align-items:center; margin-top:1rem; }
+.collection-actions a { min-height:44px; }
+.feature-card .archive-artifact { aspect-ratio:auto; padding:.55rem; }
+.feature-card .archive-artifact img { display:block; width:100%; height:clamp(6.5rem,25vw,11rem); object-fit:contain; background:transparent; }
+.feature-card .artifact-credit { display:block; margin:.35rem 0 0; font-size:.76rem; line-height:1.35; opacity:.82; }
