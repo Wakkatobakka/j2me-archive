@@ -23,10 +23,6 @@ The [source register](sources/index.html) credits Wakka’s Omni Player guide, t
 
 Historical artwork and screenshots appear with their source and attribution. Third-party images, games, trademarks, and metadata retain their own ownership and terms. The archive bundles web pages, metadata, and reference images. Game packages remain with their source collections.
 
-## Publishing
-
-The repository is a static site. Use GitHub Pages with the repository root as the source. The existing `.nojekyll` file should be included with the site files.
-
 Report corrections with a supporting source through [GitHub Issues](https://github.com/Wakkatobakka/j2me-archive/issues).
 
 [ExEn](https://wakkatobakka.github.io/exen-game-archive/) · [Zeebo](https://wakkatobakka.github.io/zeebo-archive/) · [BREW](https://wakkatobakka.github.io/qualcomm-brew-archive/) · [N-Gage](https://wakkatobakka.github.io/ngage-archive/) · [DoJa](https://wakkatobakka.github.io/doja-archive/) · [Wakka’s Workshop](https://wakkatobakka.github.io/)
